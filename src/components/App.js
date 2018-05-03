@@ -7,6 +7,7 @@ import ArrowRightIcon from 'react-icons/lib/fa/arrow-circle-right';
 import { addRecipe, removeFromCalendar } from '../actions';
 import { capitalize } from '../utils/helper';
 import { fetchRecipes } from '../utils/api';
+import FoodList from './FoodList';
 
 class App extends Component {
   state = {
@@ -123,6 +124,19 @@ class App extends Component {
                       <ArrowRightIcon size={30}/>
                     </button>
                   </div>
+                  {food !== null && (
+                    <FoodList
+                      food={food}
+                      onSelect={(recipe) => {
+                        add({
+                          recipe,
+                          day: this.state.day,
+                          meal: this.state.meal,
+                        })
+                        this.closeFoodModal();
+                      }}
+                    />
+                  )}
                 </div>
             }
           </div>
