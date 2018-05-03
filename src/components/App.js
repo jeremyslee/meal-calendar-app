@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addRecipe, removeFromCalendar } from '../actions';
-import CalendarIcon from 'react-icons/lib/fa/calendar-plus-o';
-import { capitalize } from '../utils/helper';
 import Modal from 'react-modal';
-import ArrowRightIcon from 'react-icons/lib/fa/arrow-circle-right';
 import Loading from 'react-loading';
+import CalendarIcon from 'react-icons/lib/fa/calendar-plus-o';
+import ArrowRightIcon from 'react-icons/lib/fa/arrow-circle-right';
+import { addRecipe, removeFromCalendar } from '../actions';
+import { capitalize } from '../utils/helper';
 import { fetchRecipes } from '../utils/api';
 
 class App extends Component {
   state = {
     foodModalOpen: false,
-    meal: null,
     day: null,
+    meal: null,
     food: null,
     loadingFood: false,
   }
@@ -63,9 +63,9 @@ class App extends Component {
     return (
       <div className='container'>
         <ul className='meal-types'>
-          {mealOrder.map(mealType => (
-            <li key={mealType} className='subheader'>
-              {capitalize(mealType)}
+          {mealOrder.map(meal => (
+            <li key={meal} className='subheader'>
+              {capitalize(meal)}
             </li>
           ))}
         </ul>
@@ -87,7 +87,7 @@ class App extends Component {
                           <button onClick={() => remove({ meal, day })}>Clear</button>
                         </div>
                       : <button onClick= {() => this.openFoodModal({ meal, day })} className='icon-btn'>
-                        <CalendarIcon size={30}/>
+                          <CalendarIcon size={30}/>
                         </button>
                     }
                   </li>
@@ -100,7 +100,7 @@ class App extends Component {
         <Modal
           className='modal'
           overlayClassName='overlay'
-          isOpen= {foodModalOpen}
+          isOpen={foodModalOpen}
           onRequestClose={this.closeFoodModal}
           contentLabel='Modal'>
           <div>
