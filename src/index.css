@@ -137,3 +137,28 @@ li {
   border: 1px solid #bdbdbd;
   outline: none;
 }
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ingredients-list li {
+  font-size: 24px;
+  padding: 5px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shopping-list {
+  background: none;
+  font-size: 18px;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
